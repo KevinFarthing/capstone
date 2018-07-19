@@ -1,0 +1,44 @@
+CREATE OR REPLACE FUNCTION add_story(_prompt_author_name varchar ,_prompt_text text,_story_author_name varchar,_story_text text)
+RETURNS void AS
+$BODY$
+  DECLARE
+--   _author_name;
+  _prompt_author_id int;
+  _story_author_id int;
+--   _prompt_text;
+  _prompt_id int;
+--   _story_text;
+  _story_id int
+  ;
+  BEGIN
+    SELECT author.author_id INTO _prompt_author_id FROM author
+        WHERE author_name = _prompt_author_name;
+	IF NOT FOUND THEN
+		INSERT INTO author(author_name)
+		VALUES (_prompt_author)
+		RETURNING author_id INTO _prompt_author_id;
+    END IF;
+	
+	SELECT author.author_id INTO _story_author_id FROM author
+        WHERE author_name = _story_author_name;
+	IF NOT FOUND THEN
+		INSERT INTO author(author_name)
+		VALUES (_story_author_name)
+		RETURNING author_id INTO _story_author_id;
+    END IF;
+	
+	INSERT INTO prompt(prompt_text)
+	VALUES (_prompt_text)
+	RETURNING prompt_id INTO _prompt_id;
+	
+	INSERT INTO story(story_text)
+	VALUES (_story_text)
+	RETURNING story_id INTO _story_id;
+	
+	INSERT INTO uber(prompt_id, prompt_author_id, story_id, story_author_id)
+	VALUES (_prompt_id, _prompt_author_id, _story_id, _story_author_id);
+
+	RETURN;
+  END
+$BODY$
+LANGUAGE 'plpgsql' VOLATILE;

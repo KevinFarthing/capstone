@@ -1,0 +1,23 @@
+CREATE TABLE author (
+author_name varchar(20),
+author_id SERIAL PRIMARY KEY
+);
+
+CREATE TABLE story (
+story_text text,
+story_id SERIAL PRIMARY KEY
+);
+
+CREATE TABLE prompt(
+prompt_text text,
+prompt_id SERIAL PRIMARY KEY
+);
+
+CREATE TABLE uber(
+uber_id serial PRIMARY KEY,
+prompt_id int,
+prompt_author_id int,
+story_author_id int,
+story_id int,
+liked BOOLEAN DEFAULT FALSE
+);

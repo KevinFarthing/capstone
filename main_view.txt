@@ -1,0 +1,6 @@
+CREATE OR REPLACE VIEW main_view AS
+SELECT prompt_author.author_name AS wrote_prompt,  story_author.author_name AS wrote_story, prompt.prompt_text, story.story_text FROM uber
+JOIN author AS prompt_author ON uber.prompt_author_id = prompt_author.author_id
+JOIN author AS story_author ON uber.story_author_id = story_author.author_id
+JOIN prompt ON prompt.prompt_id = uber.prompt_id
+JOIN story ON story.story_id = uber.story_id;
