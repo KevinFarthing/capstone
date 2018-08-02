@@ -15,7 +15,7 @@ $BODY$
         WHERE author_name = _prompt_author_name;
 	IF NOT FOUND THEN
 		INSERT INTO author(author_name)
-		VALUES (_prompt_author)
+		VALUES (_prompt_author_name)
 		RETURNING author_id INTO _prompt_author_id;
     END IF;
 	
