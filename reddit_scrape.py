@@ -1,6 +1,6 @@
 from psycofunctions import add_story, get_story, drop_old, get_titles
 from pgconnect import connect
-from config import reddit_config
+from login import reddit_config
 import praw
 import random
 

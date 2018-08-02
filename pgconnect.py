@@ -1,6 +1,6 @@
 import psycopg2 as pg2
 import datetime
-from config import postgres_config
+from login import postgres_config
 from psycofunctions import add_story, get_story, drop_old, get_titles
 
 def connect(x=None, l1=None):
