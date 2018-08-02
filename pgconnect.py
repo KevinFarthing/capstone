@@ -8,6 +8,7 @@ def connect(x=None, l1=None):
     x = psyco function you want to use\n
     y = list of variables psycofunction will need"""
     conn = None
+    y=None
     try:
         # read connection parameters
         params = postgres_config()
@@ -25,7 +26,6 @@ def connect(x=None, l1=None):
         db_version = cur.fetchone()
         print(db_version)
         # display the PostgreSQL database server version
-        y=None
         if x:
             y = x(conn, l1)
             conn.commit()

@@ -1,11 +1,20 @@
 {% extends "layout.html" %}
 {% block app_content %}
+{% if story %}
 <div class="container">
-<h6>{{ prompt_author }}</h6>
-<p>{{ prompt_text }}</p>
+<h6>{{ story[1] }}</h6>
+<p>{{ story[3] }}</p>
 </div>
 <div class="container">
-<h6>{{ story_author }}</h6>
-<p>{{ story_text }}</p>
+<h6>{{ story[2] }}</h6>
+<p>{{ story[4] }}</p>
 </div>
+{% else %}
+<div>
+    <p>Error connecting to database</p>
+</div>
+{% endif %}
 {% endblock %}
+
+
+<!-- uber_id=story[0],prompt_url=story[5] -->
