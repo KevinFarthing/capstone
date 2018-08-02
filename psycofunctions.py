@@ -37,7 +37,7 @@ def get_story(conn, l1):
 # don't forget, prompt text and story text need to be cleared of double quotes and all single quotes switched to repeats.
 def add_story(conn, l1):
     with conn.cursor() as curr: 
-        curr.execute(f"SELECT * FROM add_story('{l1[0]}','{l1[1]}','{l1[2]}','{l1[3]}')")
+        curr.execute(f"SELECT * FROM add_story('{l1[0]}','{l1[1]}','{l1[2]}','{l1[3]}','{l1[4]}')")
 
 def drop_old(conn, l1):
     with conn.cursor() as curr:

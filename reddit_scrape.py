@@ -21,4 +21,5 @@ def reddit_scrape():
         for post in posts:
             prompt_name = post.title.replace("'","''")
             if "[WP]" in prompt_name and prompt_name not in sql_entries:
-                connect(add_story,[str(post.author),prompt_name,str(post.comments[1].author),post.comments[1].body.replace("'","''")])
+                connect(add_story,[str(post.author),prompt_name,str(post.comments[1].author),post.comments[1].body.replace("'","''"),post.id])
+
