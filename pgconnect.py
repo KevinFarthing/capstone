@@ -8,7 +8,7 @@ import os
 
 def connect(x=None, l1=None):
     """ Connect to the PostgreSQL database server \n
-    x = psyco function you want to use\n
+    x = psyco function to use\n
     y = list of variables psycofunction will need"""
     conn = None
     y=None
@@ -20,7 +20,7 @@ def connect(x=None, l1=None):
         print('Connecting to the PostgreSQL database...')
         # try:
         DATABASE_URL = os.environ['DATABASE_URL']
-        conn = pg2.connect(database=DATABASE_URL)
+        conn = pg2.connect(DATABASE_URL)
         # except KeyError:
         #     DATABASE_URL = 'writing_prompt'
         #     conn = pg2.connect(database=DATABASE_URL, user='kevin', password='admin')
