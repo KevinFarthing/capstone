@@ -40,17 +40,15 @@ def add_story(conn, l1):
         curr.execute(f"SELECT * FROM add_story('{l1[0]}','{l1[1]}','{l1[2]}','{l1[3]}','{l1[4]}')")
 
 def drop_old(conn, l1):
+    # ought to be a function stored in server but testing
     with conn.cursor() as curr:
         curr.execute(f"SELECT * FROM uber")
         records = curr.fetchall()
     for record in records:
-        if datetime.date.today() - record[6] > datetime.timedelta(days=6) and not record[4]:
+        if datetime.date.today() - record[6] > datetime.timedelta(days=3) and not record[4]:
             with conn.cursor() as local_curr:
-                print(f"DELETE FROM prompt WHERE prompt_id={record[1]};")
                 local_curr.execute(f"DELETE FROM prompt WHERE prompt_id={record[1]};")
-                print(f"DELETE FROM story WHERE story_id={record[3]};")
                 local_curr.execute(f"DELETE FROM story WHERE story_id={record[3]};")
-                print(f"DELETE FROM uber WHERE uber_id={record[0]};")
                 local_curr.execute(f"DELETE FROM uber WHERE uber_id={record[0]};")
             print("Removed uber_id " + str(record[0]))
 

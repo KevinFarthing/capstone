@@ -1,6 +1,6 @@
 import psycopg2 as pg2
 import datetime
-from login import postgres_config
+# from login import postgres_config
 from psycofunctions import add_story, get_story, drop_old, get_titles
 import os
 
@@ -14,15 +14,16 @@ def connect(x=None, l1=None):
     y=None
     try:
         # read connection parameters
-        params = postgres_config()
+        # params = postgres_config()
  
         # connect to the PostgreSQL server
         print('Connecting to the PostgreSQL database...')
-        # try:
-        DATABASE_URL = os.environ['DATABASE_URL']
-        # except KeyError:
-
-        conn = pg2.connect(DATABASE_URL)
+        try:
+            DATABASE_URL = os.environ['DATABASE_URL']
+            conn = pg2.connect(database=DATABASE_URL)
+        except KeyError:
+            DATABASE_URL = 'writing_prompt'
+            conn = pg2.connect(database=DATABASE_URL, user='kevin', password='admin')
         # conn = pg2.connect(**params sslmode="require") #?SSL mode?
 
         # create a cursor
