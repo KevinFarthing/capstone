@@ -3,6 +3,8 @@ import datetime
 from login import postgres_config
 from psycofunctions import add_story, get_story, drop_old, get_titles
 
+# added uber_id 22 as test
+
 def connect(x=None, l1=None):
     """ Connect to the PostgreSQL database server \n
     x = psyco function you want to use\n
@@ -15,7 +17,12 @@ def connect(x=None, l1=None):
  
         # connect to the PostgreSQL server
         print('Connecting to the PostgreSQL database...')
-        conn = pg2.connect(**params)
+        # try:
+        DATABASE_URL = os.environ['DATABASE_URL']
+        # except KeyError:
+
+        conn = pg2.connect(DATABASE_URL sslmode="require")
+        # conn = pg2.connect(**params sslmode="require") #?SSL mode?
 
         # create a cursor
         cur = conn.cursor()
