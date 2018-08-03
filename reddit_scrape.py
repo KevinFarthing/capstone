@@ -10,7 +10,7 @@ import random
 
 
 
-# WORKS!!!!!
+# refactor this. it's a mess.
 def reddit_scrape():
     print('Connecting to Reddit...')
     params = reddit_config()
