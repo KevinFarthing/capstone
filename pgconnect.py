@@ -18,12 +18,12 @@ def connect(x=None, l1=None):
  
         # connect to the PostgreSQL server
         print('Connecting to the PostgreSQL database...')
-        try:
-            DATABASE_URL = os.environ['DATABASE_URL']
-            conn = pg2.connect(database=DATABASE_URL)
-        except KeyError:
-            DATABASE_URL = 'writing_prompt'
-            conn = pg2.connect(database=DATABASE_URL, user='kevin', password='admin')
+        # try:
+        DATABASE_URL = os.environ['DATABASE_URL']
+        conn = pg2.connect(database=DATABASE_URL)
+        # except KeyError:
+        #     DATABASE_URL = 'writing_prompt'
+        #     conn = pg2.connect(database=DATABASE_URL, user='kevin', password='admin')
         # conn = pg2.connect(**params sslmode="require") #?SSL mode?
 
         # create a cursor
