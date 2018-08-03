@@ -21,7 +21,7 @@ def connect(x=None, l1=None):
         DATABASE_URL = os.environ['DATABASE_URL']
         # except KeyError:
 
-        conn = pg2.connect(DATABASE_URL sslmode="require")
+        conn = pg2.connect(DATABASE_URL)
         # conn = pg2.connect(**params sslmode="require") #?SSL mode?
 
         # create a cursor
