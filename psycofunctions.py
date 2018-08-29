@@ -7,19 +7,31 @@ def get_titles(conn, l1):
         record = curr.fetchall()
     return [str(each[0]) for each in record]
 
+def get_full_list(conn, l1):
+    with conn.cursor() as curr:
+        curr.execute("SELECT prompt_text, url, uber_id FROM main_view;")
+        record = curr.fetchall()
+    return record # duh. this also works.
+
 def get_ids(conn, l1=[]):
     with conn.cursor() as curr:
         curr.execute("SELECT uber_id FROM uber;")
         record = curr.fetchall()
     return [each[0] for each in record]
 
-def get_story(conn, l1):
+def get_story(conn, id):
     with conn.cursor() as curr:
-        ids = get_ids(conn)
-        i = randint(0,len(ids)-1)
-        curr.execute(f"SELECT * FROM main_view WHERE uber_id = {ids[i]};")
+        curr.execute(f"SELECT * FROM main_view WHERE uber_id = {id};")
         record = curr.fetchone()
     return record
+
+def get_random_story(conn,l1):
+    ids = get_ids(conn)
+    # i = randint(0,len(ids)-1)
+    i = ids[randint(0,len(ids)-1)]
+    record = get_story(conn,i)
+    return record
+    
 
 
 def add_story(conn, l1):
