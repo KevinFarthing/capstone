@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block app_content %}
+{% if story %}
+
+<div class="container">
+<a href='{{ "https://www.reddit.com/user/"+story[1] }}'>{{ story[1] }}</a>
+<p><a href='{{ "https://www.reddit.com/r/WritingPrompts/comments/" + story[5] }}'>{{ story[3] }}</p></a>
+</div>
+
+<div class="container">
+<a href='{{ "https://www.reddit.com/user/"+story[2] }}'>{{ story[2] }}</a>
+<p style="white-space: pre-wrap;">{{ story[4] }}</p>
+</div>
+
+{% else %}
+<div>
+    <p>Error connecting to database</p>
+</div>
+{% endif %}
+{% endblock %}
+
+
+<!-- uber_id=story[0],prompt_url=story[5] -->
