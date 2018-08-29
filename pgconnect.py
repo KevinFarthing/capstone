@@ -1,7 +1,7 @@
 import psycopg2 as pg2
 import datetime
 from login import postgres_config
-from psycofunctions import add_story, get_story, drop_old, get_titles
+# from psycofunctions import add_story, get_story, drop_old, get_titles
 import os
 
 # added uber_id 22 as test
